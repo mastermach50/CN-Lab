@@ -11,6 +11,7 @@ int main() {
     int serv_sock; // the socket to the server
     char buffer[1024]; // the data buffer
     struct sockaddr_in serv_addr; // the server address
+    socklen_t addr_size = sizeof(serv_addr); // the size of the address
 
     // create the socket
     // AF_INET = regular ipv4 connection
@@ -25,7 +26,7 @@ int main() {
 
     // connect to the server
     printf("Connecting to 127.0.0.1:9999...\n");
-    int errcode = connect(serv_sock, (struct sockaddr *) &serv_addr, sizeof(serv_addr));
+    int errcode = connect(serv_sock, (struct sockaddr *) &serv_addr, addr_size);
     if (errcode == 0) {
         printf("Connection successful\n");
     } else {
@@ -33,9 +34,11 @@ int main() {
         return errcode;
     }
 
-    // send and receive data
+    // send data
     strcpy(buffer, "Hi, this is the client!\n");
-    send(serv_sock, buffer, strlen(buffer), 0);
+    send(serv_sock, buffer, 1024, 0);
+
+    // recieve data
     recv(serv_sock, buffer, 1024, 0);
     printf("server> %s\n", buffer);
 
