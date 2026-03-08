@@ -18,6 +18,13 @@ int main() {
     // SOCK_STREAM = connection oriented
     // 0 = default protocol
     serv_sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (serv_sock < 0) {
+        perror("Error creating socket\n");
+        return -1;
+    } else {
+        printf("Socket created\n");
+    }
+
 
     // set server address
     serv_addr.sin_family = AF_INET;
@@ -28,7 +35,7 @@ int main() {
     if (bind(serv_sock, (struct sockaddr *) &serv_addr, addr_size) == 0) {
         printf("Binding successful\n");
     } else {
-        printf("Binding failed\n");
+        perror("Binding failed\n");
         return -1;
     }
 
@@ -36,7 +43,7 @@ int main() {
     if (listen(serv_sock, 5) == 0) {
         printf("Listening for connections on 127.0.0.1:9999...\n");
     } else {
-        printf("Error listening for connections...\n");
+        perror("Error listening for connections...\n");
         return -1;
     }
 

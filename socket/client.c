@@ -18,6 +18,12 @@ int main() {
     // SOCK_STREAM = connection oriented
     // 0 = default protocol
     serv_sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (serv_sock < 0) {
+        perror("Error creating socket\n");
+        return -1;
+    } else {
+        printf("Socket created\n");
+    }
 
     // set server address
     serv_addr.sin_family = AF_INET;
@@ -29,7 +35,7 @@ int main() {
     if (connect(serv_sock, (struct sockaddr *) &serv_addr, addr_size) == 0) {
         printf("Connection successful\n");
     } else {
-        printf("Connection failed\n");
+        perror("Connection failed\n");
         return -1;
     }
 
