@@ -26,12 +26,11 @@ int main() {
 
     // connect to the server
     printf("Connecting to 127.0.0.1:9999...\n");
-    int errcode = connect(serv_sock, (struct sockaddr *) &serv_addr, addr_size);
-    if (errcode == 0) {
+    if (connect(serv_sock, (struct sockaddr *) &serv_addr, addr_size) == 0) {
         printf("Connection successful\n");
     } else {
         printf("Connection failed\n");
-        return errcode;
+        return -1;
     }
 
     // send data

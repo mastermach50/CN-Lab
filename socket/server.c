@@ -37,6 +37,7 @@ int main() {
         printf("Listening for connections on 127.0.0.1:9999...\n");
     } else {
         printf("Error listening for connections...\n");
+        return -1;
     }
 
     // accept the connection

@@ -10,6 +10,7 @@ int main() {
     int serv_sock;
     char buffer[1024];
     struct sockaddr_in serv_addr;
+    socklen_t addr_size = sizeof(serv_addr);
 
     // 1. socket()
     serv_sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -19,7 +20,7 @@ int main() {
     serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     // 2. connect()
-    connect(serv_sock, (struct sockaddr *) &serv_addr, sizeof(serv_addr));
+    connect(serv_sock, (struct sockaddr *) &serv_addr, addr_size);
 
     // 3. send() / recv()
     strcpy(buffer, "Hi, this is the client!\n");
