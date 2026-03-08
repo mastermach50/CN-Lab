@@ -1,0 +1,12 @@
+*
+!.gitignore
+
+!*/
+
+!*.c
+!*.h
+
+!.envrc
+!shell.nix
+
+!README.md
