@@ -6,6 +6,8 @@
 !*.c
 !*.h
 
+!*.txt
+
 !.envrc
 !shell.nix
 

@@ -5,7 +5,7 @@
 
 pkgs.mkShell {
   name = "C";
-  packages = with pkgs; [
+  buildInputs = with pkgs; [
     libgcc
     clang-tools
 
@@ -13,7 +13,6 @@ pkgs.mkShell {
     glibc
 
     man-pages
-
   ];
   LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
     pkgs.stdenv.cc.cc
