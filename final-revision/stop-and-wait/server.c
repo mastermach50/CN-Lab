@@ -53,7 +53,7 @@ int main() {
         );
 
         if (num > 0) {
-            printf("< { %d %d %s}\n", buffer->type, buffer->seq, buffer->data);
+            printf("< { %d %d %s }\n", buffer->type, buffer->seq, buffer->data);
             // if the frame is in the correct sequence and we are lucky then send ACK
             if (buffer->seq == seq & (rand() % 100) < 80) {
                 buffer->type = 1;

@@ -47,7 +47,7 @@ int main() {
             (struct sockaddr*) &servAddr,
             sizeof(servAddr)
         );
-        printf("> { %d %d %s}\n", buffer.type, buffer.seq, buffer.data);
+        printf("> { %d %d %s }\n", buffer.type, buffer.seq, buffer.data);
 
         int num = recvfrom(
             servSock,
